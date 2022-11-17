@@ -10,7 +10,7 @@ namespace Drive
     {
         public static int pose = 0;
 
-        public static void Move(int pl)
+        public static int Move(int pl)
         {
             while (true)
             {
@@ -45,6 +45,11 @@ namespace Drive
                     {
                         pose++;
                     }
+                }
+
+                else if (key.Key == ConsoleKey.Enter)
+                {
+                    return pose;
                 }
 
                 

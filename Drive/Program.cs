@@ -12,7 +12,11 @@ namespace Drive
             while (true)
             {
 
-                Arrow.Move(a);
+                int disk = Arrow.Move(a);
+                Console.Clear();
+                Drives.getDrivers(Drives.disks[disk].Name);
+
+
 
             }
         }
