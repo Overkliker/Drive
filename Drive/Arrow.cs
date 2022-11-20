@@ -14,43 +14,57 @@ namespace Drive
         {
             while (true)
             {
-                Console.SetCursorPosition(0, pose);
-                Console.WriteLine("->");
-                ConsoleKeyInfo key = Console.ReadKey();
-                if(key.Key == ConsoleKey.UpArrow)
+                try
                 {
                     Console.SetCursorPosition(0, pose);
-                    Console.WriteLine("  ");
+                    Console.WriteLine("->");
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    if(key.Key == ConsoleKey.UpArrow)
+                    {
+                        Console.SetCursorPosition(0, pose);
+                        Console.WriteLine("  ");
 
-                    if (pose <= 0)
-                    {
-                        pose += pl - 1;
-                    }
-                    else
-                    {
-                        pose--;
-                    }
+                        if (pose <= 0)
+                        {
+                            pose += pl - 1;
+                        }
+                        else
+                        {
+                            pose--;
+                        }
                     
-                }
-                else if (key.Key == ConsoleKey.DownArrow)
-                {
-                    Console.SetCursorPosition(0, pose);
-                    Console.WriteLine("  ");
-
-                    if (pose >= pl - 1)
-                    {
-                        pose -= pl - 1;
                     }
-                    else
+                    else if (key.Key == ConsoleKey.DownArrow)
                     {
-                        pose++;
-                    }
-                }
+                        Console.SetCursorPosition(0, pose);
+                        Console.WriteLine("  ");
 
-                else if (key.Key == ConsoleKey.Enter)
+                        if (pose >= pl - 1)
+                        {
+                            pose -= pl - 1;
+                        }
+                        else
+                        {
+                            pose++;
+                        }
+                    }
+
+                    else if (key.Key == ConsoleKey.Escape)
+                    {
+                        return -1;
+                        break;
+                    }
+
+                    else if (key.Key == ConsoleKey.Enter)
+                    {
+                        return pose;
+                        break;
+                    }
+                }catch (Exception)
                 {
-                    return pose;
+
                 }
+                
 
                 
             }

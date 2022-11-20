@@ -9,6 +9,8 @@ namespace Drive
     internal class Drives
     {
         public static List<System.IO.DriveInfo> disks = new List<System.IO.DriveInfo>();
+        public static List<string> paths = new List<string>();
+        public static List<string> lastPath = new List<string>();
         public static int Drivers()
         {
             int ct = 0;
@@ -31,11 +33,32 @@ namespace Drive
 
         public static void getDrivers(string path)
         {
-            string[] a = Directory.GetDirectories(path);
-            foreach (string s in a)
-            {
-                Console.WriteLine(s);
+            try{
+                lastPath.Add(path);
+                paths.Clear();
+                string[] dirs = Directory.GetDirectories(path);
+                string[] files = Directory.GetFiles(path);
+                foreach (string s in dirs)
+                {
+                    Console.WriteLine($"    {s}");
+                    paths.Add(s);
+                }
+                if (files.Length != 0)
+                {
+                    foreach (string s in files)
+                    {
+                        Console.WriteLine($"    {s}");
+                        paths.Add(s);
+                    }
+                }
+                
+
             }
+            catch (IOException)
+            {
+
+            }
+            
         }
 
 
