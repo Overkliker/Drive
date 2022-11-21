@@ -16,7 +16,15 @@ namespace Drive
                 if (Drives.paths.Count() == 0)
                 {
                     Console.Clear();
-                    Drives.getDrivers(Drives.disks[disk].Name);
+                    Drives.getDrivers(Drives.disks[0].Name);
+                    foreach (string i in Drives.paths)
+                    {
+                        Console.WriteLine(i);
+                    }
+                    foreach (string i in Drives.lastPath)
+                    {
+                        Console.WriteLine(i);
+                    }
                     a = Drives.paths.Count();
                 }
 
@@ -27,12 +35,25 @@ namespace Drive
                     if (Drives.lastPath.Count() == 1)
                     {
                         a = Drives.Drivers();
+                        Drives.lastPath.RemoveAt(0);
                     }
-                    else
+                    else if (Drives.lastPath.Count() > 1)
                     {
                         int len = Drives.lastPath.Count() - 1;
-                        Drives.getDrivers(Drives.lastPath[len]);
+
+                        string last = Drives.lastPath[len - 1];
+
                         Drives.lastPath.RemoveAt(len);
+                        Drives.lastPath.RemoveAt(len - 1);
+
+                        Console.WriteLine(last);
+                        Drives.getDrivers(last);
+                        
+                        /*foreach (string i in Drives.lastPath)
+                        {
+                            Console.WriteLine(i);
+                        }*/
+
                         a = Drives.paths.Count();
 
                     }
@@ -47,10 +68,10 @@ namespace Drive
                 }
 
 
-                foreach (string i in Drives.lastPath)
+                /*foreach (string i in Drives.lastPath)
                 {
                     Console.WriteLine(i);
-                }
+                }*/
                 
                 
 

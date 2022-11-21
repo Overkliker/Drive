@@ -49,15 +49,21 @@ namespace Drive
                         }
                     }
 
-                    else if (key.Key == ConsoleKey.Escape)
+                    else if (key.Key == ConsoleKey.Z)
                     {
                         return -1;
+                        pose = 0;
+                        Console.SetCursorPosition(0, pose);
+                        Console.WriteLine("->");
                         break;
                     }
 
                     else if (key.Key == ConsoleKey.Enter)
                     {
                         return pose;
+                        pose = 0;
+                        Console.SetCursorPosition(0, pose);
+                        Console.WriteLine("->");
                         break;
                     }
                 }catch (Exception)
