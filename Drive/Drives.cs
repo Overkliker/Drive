@@ -14,6 +14,7 @@ namespace Drive
         public static int Drivers()
         {
             int ct = 0;
+            lastPath.Clear();
             DriveInfo[] allDrives = DriveInfo.GetDrives();
             foreach (DriveInfo d in allDrives)
             {

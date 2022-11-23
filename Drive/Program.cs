@@ -21,6 +21,7 @@ namespace Drive
                     {
                         Console.WriteLine(i);
                     }
+                    Console.WriteLine();
                     foreach (string i in Drives.lastPath)
                     {
                         Console.WriteLine(i);
@@ -35,7 +36,12 @@ namespace Drive
                     if (Drives.lastPath.Count() == 1)
                     {
                         a = Drives.Drivers();
-                        Drives.lastPath.RemoveAt(0);
+                        foreach (string i in Drives.lastPath)
+                        {
+                            Console.WriteLine(i);
+                        }
+                        Console.WriteLine();
+                        
                     }
                     else if (Drives.lastPath.Count() > 1)
                     {
