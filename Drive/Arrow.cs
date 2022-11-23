@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Drive
 {
@@ -19,6 +20,7 @@ namespace Drive
                     Console.SetCursorPosition(0, pose);
                     Console.WriteLine("->");
                     ConsoleKeyInfo key = Console.ReadKey();
+
                     if(key.Key == ConsoleKey.UpArrow)
                     {
                         Console.SetCursorPosition(0, pose);
@@ -49,23 +51,24 @@ namespace Drive
                         }
                     }
 
-                    else if (key.Key == ConsoleKey.Z)
+                    else if (key.Key == ConsoleKey.Z && Drives.paths.Count() != 0)
                     {
                         return -1;
-                        pose = 0;
-                        Console.SetCursorPosition(0, pose);
-                        Console.WriteLine("->");
                         break;
                     }
 
                     else if (key.Key == ConsoleKey.Enter)
                     {
                         return pose;
-                        pose = 0;
-                        Console.SetCursorPosition(0, pose);
-                        Console.WriteLine("->");
                         break;
                     }
+
+                    else if (key.Key == ConsoleKey.RightArrow && Drives.paths.Count() != 0 && File.Exists(Drives.paths[pose]))
+                    {
+                        Process.Start(new ProcessStartInfo { FileName = Drives.paths[pose], UseShellExecute = true });
+                    }
+
+                    else if (key.Key == )
                 }catch (Exception)
                 {
 

@@ -13,29 +13,18 @@ namespace Drive
             {
                 int disk = Arrow.Move(a);
 
-                if (Drives.paths.Count() == 0)
-                {
-                    Console.Clear();
-                    Drives.getDrivers(Drives.disks[0].Name);
-                    foreach (string i in Drives.paths)
-                    {
-                        Console.WriteLine(i);
-                    }
-                    foreach (string i in Drives.lastPath)
-                    {
-                        Console.WriteLine(i);
-                    }
-                    a = Drives.paths.Count();
-                }
 
-                else if (disk == -1)
+
+                if (disk == -1)
                 {
                     Console.Clear();
 
                     if (Drives.lastPath.Count() == 1)
                     {
                         a = Drives.Drivers();
+                        Drives.paths.Clear();
                         Drives.lastPath.RemoveAt(0);
+                        Arrow.pose = 0;
                     }
                     else if (Drives.lastPath.Count() > 1)
                     {
@@ -45,18 +34,22 @@ namespace Drive
 
                         Drives.lastPath.RemoveAt(len);
                         Drives.lastPath.RemoveAt(len - 1);
-
-                        Console.WriteLine(last);
                         Drives.getDrivers(last);
                         
-                        /*foreach (string i in Drives.lastPath)
-                        {
-                            Console.WriteLine(i);
-                        }*/
+
 
                         a = Drives.paths.Count();
 
+                        Arrow.pose = 0;
+
                     }
+                }
+
+                else if (Drives.paths.Count() == 0)
+                {
+                    Console.Clear();
+                    Drives.getDrivers(Drives.disks[0].Name);
+                    a = Drives.paths.Count();
                 }
 
                 else
@@ -64,14 +57,9 @@ namespace Drive
                     Console.Clear();
                     Drives.getDrivers(Drives.paths[disk]);
                     a = Drives.paths.Count();
+                    Arrow.pose = 0;
 
                 }
-
-
-                /*foreach (string i in Drives.lastPath)
-                {
-                    Console.WriteLine(i);
-                }*/
                 
                 
 
