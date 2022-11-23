@@ -14,7 +14,6 @@ namespace Drive
                 int disk = Arrow.Move(a);
 
 
-
                 if (disk == -1)
                 {
                     Console.Clear();
@@ -23,7 +22,7 @@ namespace Drive
                     {
                         a = Drives.Drivers();
                         Drives.paths.Clear();
-                        Drives.lastPath.RemoveAt(0);
+
                         Arrow.pose = 0;
                     }
                     else if (Drives.lastPath.Count() > 1)
